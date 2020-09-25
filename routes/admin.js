@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
-router.post("/adminsend", async (req, res) => {
+router.post("/adminreg", async (req, res) => {
   try {
     let { name, password, passwordCheck, email } = req.body;
 

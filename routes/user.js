@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
-router.post("/send", async (req, res) => {
+router.post("/userreg", async (req, res) => {
   try {
     let { name, password, passwordCheck, email } = req.body;
 
@@ -48,7 +48,7 @@ router.post("/send", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/userlogin", async (req, res) => {
   try {
     let { email, password } = req.body;
 
