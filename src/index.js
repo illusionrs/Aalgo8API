@@ -7,3 +7,6 @@ app.get("/he", (req, res) => {
 });
 
 app.listen(port, () => console.log("working"));
+
+app.use("/user", require("../routes/user.js"));
+app.use("/admin", require("../routes/admin.js"));
