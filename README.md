@@ -28,5 +28,17 @@
  
 * ## Method :GET
        * /productdata/:id
-       *  body: { producrid,productname,price} 
+       *  Response: { producrid,productname,price} 
+* ## Method :POST
+       * /productdata
+       * body : {productid, productname, price}
+ 
+ # Order or Payment API:
+  * ## Method : POST
+       * /pay
+       * body : { amount, useremail, productid, productname}
+       * Response :{id, currency, amount}
+    
+    
+        
 
