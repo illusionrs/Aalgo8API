@@ -9,7 +9,7 @@ const razorpay = new Razorpay({
   key_secret: "NUZ8NFKrsyt0bQURON9mZYOI"
 });
 
-router.post("/payment", async (req, res) => {
+router.post("/", async (req, res) => {
   const { amount, useremail, productid, productname } = req.body;
 
   const payment_capture = 1;

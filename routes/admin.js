@@ -22,7 +22,7 @@ router.post("/reg", async (req, res) => {
       return res.status(400).json({ msg: "Password should be same." });
     }
 
-    const existUser = User.findOne({ email: email });
+    const existUser = Admin.findOne({ email: email });
     //  console.log(existUser)
 
     if (existUser) {

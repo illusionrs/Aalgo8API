@@ -7,10 +7,12 @@
     "start": "nodemon src/index.js"
   },
   "dependencies": {
+    "apidoc": "0.25.0",
     "bcrypt": "5.0.0",
     "cors": "2.8.5",
     "express": "4.17.1",
     "mongoose": "5.10.7",
+    "node-api-doc-generator": "1.1.1",
     "razorpay": "2.0.6",
     "shortid": "2.2.15"
   },

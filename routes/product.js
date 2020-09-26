@@ -3,13 +3,13 @@ const product = require("../models/product");
 
 const router = express.Router();
 
-router.get("/product", async (req, res) => {
+router.get("/", async (req, res) => {
   const result = await product.find({});
 
   res.send(result);
 });
 
-router.get("/product/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const result = await product.find({ productid: req.params.id });
 
   if (result) res.send(result);
@@ -18,7 +18,7 @@ router.get("/product/:id", async (req, res) => {
   }
 });
 
-router.post("/product", (req, res) => {
+router.post("/", (req, res) => {
   const { productname, productid, price } = req.body;
 
   if (!productname || !productid || !price)

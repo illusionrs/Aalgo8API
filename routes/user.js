@@ -4,10 +4,6 @@ const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
-router.get("/work", (req, res) => {
-  res.send("user route");
-});
-
 router.post("/reg", async (req, res) => {
   try {
     let { name, password, passwordCheck, email } = req.body;
