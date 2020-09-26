@@ -41,3 +41,5 @@ router.post("/payment", async (req, res) => {
     console.log(error);
   }
 });
+
+module.exports = router;
