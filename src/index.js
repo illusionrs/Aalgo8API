@@ -24,8 +24,8 @@ mongoose.connection.on("connected", () => console.log("connected"));
 app.use(cors());
 app.use(express.json());
 
-app.get("/he", (req, res) => {
-  res.send("hello");
+app.get("/", (req, res) => {
+  res.send("<center><h1>API IS LIVE</h1></center>");
 });
 
 app.listen(port, () => console.log("working"));
