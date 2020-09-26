@@ -22,7 +22,7 @@
        *  body: { email ,password}
 
 # Product API:
- * ##  Method :GET
+ * ## Method :GET
        * /productdta
        * Response: {productid, productname, price}
  
@@ -35,9 +35,9 @@
  
  # Order or Payment API:
   * ## Method : POST
-       * /pay
-       * body : { amount, useremail, productid, productname}
-       * Response :{id, currency, amount}
+       *  /pay
+       *  body : { amount, useremail, productid, productname}
+       *  Response :{id, currency, amount}
     
     
         
