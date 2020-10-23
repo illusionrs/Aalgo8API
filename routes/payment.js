@@ -3,10 +3,11 @@ const Razorpay = require("razorpay");
 const order = require("../models/order.js");
 const router = express.Router();
 const shortid = require("shortid");
+require('dotenv').config()
 
 const razorpay = new Razorpay({
-  key_id: "rzp_test_CLxxusfQBtFGDo",
-  key_secret: "NUZ8NFKrsyt0bQURON9mZYOI"
+  key_id: process.env.RAZOR_ID,
+  key_secret: process.env.RAZOR_SECRET
 });
 
 router.post("/", async (req, res) => {

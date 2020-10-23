@@ -1,6 +1,7 @@
 const express = require("express");
 const Admin = require("../models/admin.js");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken')
 
 const router = express.Router();
 
@@ -22,8 +23,8 @@ router.post("/reg", async (req, res) => {
       return res.status(400).json({ msg: "Password should be same." });
     }
 
-    const existUser = Admin.findOne({ email: email });
-    //  console.log(existUser)
+    const existUser = await Admin.findOne({ email: email });
+    
 
     if (existUser) {
       return res.status(400).json({ msg: "User Exists.." });
@@ -65,6 +66,16 @@ router.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+    res.json({
+        token,
+        user: {
+          id: user._id,
+          name: user.name,
+        },
+      });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

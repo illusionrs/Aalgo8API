@@ -1,8 +1,9 @@
 const express = require("express");
 const User = require("../models/user.js");
 const bcrypt = require("bcrypt");
-
+const jwt = require('jsonwebtoken')
 const router = express.Router();
+require('dotenv').config()
 
 router.post("/reg", async (req, res) => {
   try {
@@ -22,12 +23,13 @@ router.post("/reg", async (req, res) => {
       return res.status(400).json({ msg: "Password should be same." });
     }
 
-    const existUser = User.findOne({ email: email });
-    //  console.log(existUser)
+    const existUser = await User.findOne({ email: email });
+     console.log(existUser)
 
     if (existUser) {
       return res.status(400).json({ msg: "User Exists.." });
     }
+    
 
     if (!name) name = email;
 
@@ -66,15 +68,16 @@ router.post("/login", async (req, res) => {
 
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
 
-    // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-    // res.json({
-    //     token,
-    //     user: {
-    //       id: user._id,
-    //       name: user.name,
-    //     },
-    //   });
+    res.json({
+        token,
+        user: {
+          id: user._id,
+          name: user.name,
+        },
+      });
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

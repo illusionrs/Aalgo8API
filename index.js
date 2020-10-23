@@ -7,9 +7,10 @@ const mongoose = require("mongoose");
 
 const port = process.env.PORT || 8080;
 const app = express();
+require('dotenv').config()
 
 mongoose.connect(
-  "mongodb+srv://rajeev255:rajeev123@cluster0-uyau0.mongodb.net/EmployeeDb?retryWrites=true&w=majority",
+  process.env.MONGO_URI,
 
   {
     useNewUrlParser: true,
@@ -30,7 +31,7 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => console.log("working"));
 
-app.use("/user", require("../routes/user.js"));
-app.use("/admin", require("../routes/admin.js"));
-app.use("/pay", require("../routes/payment.js"));
-app.use("/productdata", require("../routes/product.js"));
+app.use("/user", require("./routes/user.js"));
+app.use("/admin", require("./routes/admin.js"));
+app.use("/pay", require("./routes/payment.js"));
+app.use("/productdata", require("./routes/product.js"));

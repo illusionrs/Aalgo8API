@@ -18,19 +18,23 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { productname, productid, price } = req.body;
 
   if (!productname || !productid || !price)
     return res.status(400).json({ msg: "all field required" });
+
+    const check = await product.findOne({productid:productid})
+    if(check)
+    res.json({msg:"product with same id exists"})
 
   const productsave = new product({
     productname,
     productid,
     price
   });
-  productsave.save();
-  res.send("recieved");
+  const svdata= await productsave.save();
+  res.json({ data:svdata})
 });
 
 module.exports = router;
